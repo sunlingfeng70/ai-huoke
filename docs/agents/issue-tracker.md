@@ -29,6 +29,26 @@ GitHub shares one number space across issues and PRs, so a bare `#42` may be eit
 
 Create a GitHub issue.
 
+## Issue title conventions
+
+A spec — the deliverable of `/to-spec`, which you may know as a PRD — gets a title prefixed **`Spec: `**, so specs are distinguishable from bug reports and feature requests at a glance in the issue list:
+
+```
+Spec: 第一版意向名单工具
+```
+
+A ticket — one of the tracer-bullet issues `/to-tickets` breaks a spec into — gets a title prefixed **`Ticket: `**:
+
+```
+Ticket: 判意阶段跑通一条评论
+```
+
+So a spec and the tickets derived from it are distinguishable at a glance in the issue list, and either set can be filtered on its own.
+
+Both prefixes are reserved for their respective deliverables. Bugs, chores, and other issues take a plain descriptive title with no prefix.
+
+Titles may be written in either English or Chinese — match the language of the body. The `Spec: ` and `Ticket: ` prefixes themselves stay in English regardless.
+
 ## When a skill says "fetch the relevant ticket"
 
 Run `gh issue view <number> --comments`.
