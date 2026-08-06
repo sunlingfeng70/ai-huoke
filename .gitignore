@@ -3,6 +3,9 @@
 # 采集产物与本地状态
 *_result.md
 *_comments_*.json
+*_leads.md
+excluded.txt
+contacted.txt
 *.sqlite
 *.sqlite3
 *.db
