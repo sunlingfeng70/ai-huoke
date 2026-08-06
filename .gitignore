@@ -1,0 +1,14 @@
+.DS_Store
+
+# 采集产物与本地状态
+*_result.md
+*_comments_*.json
+*.sqlite
+*.sqlite3
+*.db
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
