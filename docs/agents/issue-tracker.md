@@ -37,13 +37,21 @@ A spec — the deliverable of `/to-spec`, which you may know as a PRD — gets a
 Spec: 第一版意向名单工具
 ```
 
-A ticket — one of the tracer-bullet issues `/to-tickets` breaks a spec into — gets a title prefixed **`Ticket: `**:
+A ticket — one of the tracer-bullet issues `/to-tickets` breaks a spec into — gets a title prefixed **`Ticket NN: `**, where `NN` is a zero-padded sequence number:
 
 ```
-Ticket: 判意阶段跑通一条评论
+Ticket 01: 判意阶段跑通一条评论
+Ticket 02: 批次管道骨架与 Markdown 名单产出
 ```
 
 So a spec and the tickets derived from it are distinguishable at a glance in the issue list, and either set can be filtered on its own.
+
+### Ticket numbering
+
+- **Numbered from `01` in dependency order** — blockers first, matching the order `/to-tickets` publishes them in and the `<NN>-<slug>.md` numbering it uses on a local tracker. Reading the numbers top to bottom gives a workable order.
+- **The number is not the issue number, and the two will not line up.** GitHub shares one number space across issues and PRs and the parent spec consumes one, so `Ticket 01` may well be issue `#2`. Always cite tickets by issue number (`#2`) when referring to them; the `NN` is for reading order only.
+- **Scoped to the parent spec**, not the repo. A second spec's tickets start again at `01`, so two open `Ticket 01`s can coexist — the parent reference in each body, and GitHub's sub-issue grouping under the spec, tell them apart.
+- **Numbers are not reshuffled** once published. If a ticket is split or added later, give it the next unused number rather than renumbering its neighbours; the numbers are labels, and the authoritative order lives in the blocking edges.
 
 Both prefixes are reserved for their respective deliverables. Bugs, chores, and other issues take a plain descriptive title with no prefix.
 
