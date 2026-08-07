@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Callable
+from typing import Any, Callable
 
 
 @dataclass(frozen=True)
@@ -73,6 +73,27 @@ class BatchResult:
             lines.append("")
 
         return "\n".join(lines)
+
+
+def flatten_comments(raw: list[dict[str, Any]], note: Note) -> list[Comment]:
+    flat: list[Comment] = []
+    for item in raw:
+        if not isinstance(item, dict):
+            continue
+        flat.append(
+            Comment(
+                comment_id=item.get("评论ID", ""),
+                user_id=item.get("用户ID", ""),
+                nickname=item.get("用户昵称", ""),
+                content=item.get("评论内容", ""),
+                created_at=item.get("发布时间", ""),
+                note=note,
+            )
+        )
+        subs = item.get("子评论")
+        if isinstance(subs, list):
+            flat.extend(flatten_comments(subs, note))
+    return flat
 
 
 def run_batch(
